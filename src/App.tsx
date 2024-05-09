@@ -14,13 +14,9 @@ function App() {
       </GridItem>
       {/* what we put inside will be rendered on large screens and above */}
       <Show above="lg">
-        <GridItem area="aside" bg="gold">
-          Aside
-        </GridItem>
+        <GridItem area="aside">Aside</GridItem>
       </Show>
-      <GridItem area="main" bg="dodgerblue">
-        Nav
-      </GridItem>
+      <GridItem area="main">Nav</GridItem>
     </Grid>
   );
 }
