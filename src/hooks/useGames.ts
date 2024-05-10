@@ -16,7 +16,13 @@ export interface Game {
     metacritic: number;
   }
 
-const useGames = (selectedGenre: Genre | null) => useData<Game>('/games', { params: { genres: selectedGenre?.id }}, [selectedGenre?.id]); // params is one of the properties of Axios request config object
+const useGames = (selectedGenre: Genre | null, selectedPlatform: Platform | null) => 
+  useData<Game>('/games', { 
+    params: { 
+      genres: selectedGenre?.id, 
+      platforms: selectedPlatform?.id 
+    }}, 
+    [selectedGenre?.id, selectedPlatform?.id]); // params is one of the properties of Axios request config object
 // because selectedGenre could be null, here we use optional chaining
 // so if selectedGenre is null, genres will also be null
 // so we pass this object to our data hook
