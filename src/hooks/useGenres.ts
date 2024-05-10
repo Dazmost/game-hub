@@ -3,6 +3,7 @@ import useData from "./useData";
 export interface Genre {
     id: number;
     name: string;
+    image_background: string;
 }
 
 // so we are hiding these HTTP endpoint details behind the useGenres hook
