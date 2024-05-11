@@ -1,3 +1,4 @@
+import { GameQuery } from "../App";
 import useData from "./useData";
 import { Genre } from "./useGenres";
 
@@ -16,13 +17,15 @@ export interface Game {
     metacritic: number;
   }
 
-const useGames = (selectedGenre: Genre | null, selectedPlatform: Platform | null) => 
+  // (selectedGenre: Genre | null, selectedPlatform: Platform | null) => 
+const useGames = (gameQuery: GameQuery) => 
   useData<Game>('/games', { 
     params: { 
-      genres: selectedGenre?.id, 
-      platforms: selectedPlatform?.id 
+      genres: gameQuery.genre?.id, 
+      parent_platforms: gameQuery.platform?.id 
     }}, 
-    [selectedGenre?.id, selectedPlatform?.id]); // params is one of the properties of Axios request config object
+    [gameQuery]); // was [gameQuery.genre?.id, gameQuery.platform?.id]
+// params is one of the properties of Axios request config object
 // because selectedGenre could be null, here we use optional chaining
 // so if selectedGenre is null, genres will also be null
 // so we pass this object to our data hook
