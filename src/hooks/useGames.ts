@@ -22,7 +22,8 @@ const useGames = (gameQuery: GameQuery) =>
   useData<Game>('/games', { 
     params: { 
       genres: gameQuery.genre?.id, 
-      parent_platforms: gameQuery.platform?.id 
+      parent_platforms: gameQuery.platform?.id, 
+      ordering: gameQuery.sortOrder
     }}, 
     [gameQuery]); // was [gameQuery.genre?.id, gameQuery.platform?.id]
 // params is one of the properties of Axios request config object
